@@ -1,0 +1,125 @@
+Try it!
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+       <style> textarea, iframe
+	   {
+border:2px solid #400040;
+height:600px;
+width:100%;
+}
+</style>
+	 </head>
+	 <body><table border="2" width="100%" height="100%"> <tr bgcolor="#efdfff"><th>
+	 <table width="100%" height="100%" border="0" cellspacing="5" cellpadding="5">
+	 <tr>
+<td width="50%" scope="col">  </td> 
+<td width="50%" scope="col" align="left"> 
+   <center><input onclick="runCode();" type="button" value= "Run Code!"></center>
+</td>
+</tr>
+<td>
+<form>
+<center><b>Paste Your Code here!</b></center>
+<textarea name="sourceCode" id="sourceCode">
+
+
+<html>
+<head> <title>My Codes</title> </head>
+<script>
+// Prevent Object Modification
+
+var person1 = {
+name: "Nicholas"
+};
+console.log(Object.isExtensible(person1)); // true
+Object.preventExtensions(person1);
+console.log(Object.isExtensible(person1)); // false
+person1.sayName = function() {
+console.log(this.name);
+};
+console.log("sayName" in person1); // false
+
+
+//Sealing Objects 
+var person1 = {
+name: "Nicholas"
+};
+console.log(Object.isExtensible(person1)); // true
+console.log(Object.isSealed(person1)); // false
+Object.seal(person1);
+console.log(Object.isExtensible(person1)); // false
+console.log(Object.isSealed(person1)); // true
+person1.sayName = function() {
+console.log(this.name);
+};
+console.log("sayName" in person1); // false
+person1.name = "Greg";
+console.log(person1.name); // "Greg"
+delete person1.name;
+console.log("name" in person1); // true
+console.log(person1.name); // "Greg"
+var descriptor = Object.getOwnPropertyDescriptor(person1, "name");
+console.log(descriptor.configurable); // false
+
+//Freezing Objects
+var person1 = {
+name: "Nicholas"
+};
+console.log(Object.isExtensible(person1)); // true
+console.log(Object.isSealed(person1)); // false
+console.log(Object.isFrozen(person1)); // false
+Object.freeze(person1);
+console.log(Object.isExtensible(person1)); // false
+console.log(Object.isSealed(person1)); // true
+console.log(Object.isFrozen(person1)); // true
+person1.sayName = function() {
+console.log(this.name);
+};
+console.log("sayName" in person1); // false
+person1.name = "Greg";
+console.log(person1.name); // "Nicholas"
+delete person1.name;
+console.log("name" in person1); // true
+console.log(person1.name); // "Nicholas"
+var descriptor = Object.getOwnPropertyDescriptor(person1, "name");
+console.log(descriptor.configurable); // false
+console.log(descriptor.writable); // false
+
+
+</script>
+<body>
+<h1> Welcome Coders!</h1>
+<p> Write HTML, Javascript or CSS here & click run code!</p>
+<p>Also to view <b>console.log</b> output you must view browser console (pressing F12 for chrome users)<p>
+</body> 
+</html>
+
+
+</textarea>
+</form>
+</td>
+
+<td><b><center>Output</b></center>
+<iframe name="targetCode"  id="targetCode"> </iframe> </td>
+</table>
+<script>
+function runCode() {
+var content = document.getElementById('sourceCode').value;
+var iframe = document.getElementById('targetCode');
+iframe = (iframe.contentWindow)?iframe.contentWindow:(iframe.contentDocument)? iframe.contentDocument.document: 
+iframe.contentDocument;
+
+iframe.document.open();
+iframe.document.write(content);
+iframe.document.close();
+return false;
+}
+runCode();
+</script>
+</tr>
+</th>
+</table>
+</body>
+</html>

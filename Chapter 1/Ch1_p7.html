@@ -1,0 +1,92 @@
+Try it!
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+       <style> textarea, iframe
+	   {
+border:2px solid #400040;
+height:600px;
+width:100%;
+}
+</style>
+	 </head>
+	 <body><table border="2" width="100%" height="100%"> <tr bgcolor="#efdfff"><th>
+	 <table width="100%" height="100%" border="0" cellspacing="5" cellpadding="5">
+	 <tr>
+<td width="50%" scope="col">  </td> 
+<td width="50%" scope="col" align="left"> 
+   <center><input onclick="runCode();" type="button" value= "Run Code!"></center>
+</td>
+</tr>
+<td>
+<form>
+<center><b>Paste Your Code here!</b></center>
+<textarea name="sourceCode" id="sourceCode">
+
+
+<html>
+<head> <title>My Codes</title> </head>
+<script>
+
+// Primitive Wrapper Types 
+
+var name = "Nicholas";
+var firstChar = name.charAt(0);
+console.log(firstChar); // "N"
+This is what happens behind the scenes:
+// what the JavaScript engine does
+var name = "Nicholas";
+var temp = new String(name);
+var firstChar = temp.charAt(0);
+temp = null;
+console.log(firstChar); // "N"
+
+var name = "Nicholas";
+var count = 10;
+var found = false;
+console.log(name instanceof String); // false
+console.log(count instanceof Number); // false
+console.log(found instanceof Boolean); // false
+
+
+var found = new Boolean(false);
+if (found) {
+console.log("Found"); // this executes
+}
+
+</script>
+<body>
+<h1> Welcome Coders!</h1>
+<p> Write HTML, Javascript or CSS here & click run code!</p>
+<p>Also to view <b>console.log</b> output you must view browser console (pressing F12 for chrome users)<p>
+</body> 
+</html>
+
+
+</textarea>
+</form>
+</td>
+
+<td><b><center>Output</b></center>
+<iframe name="targetCode"  id="targetCode"> </iframe> </td>
+</table>
+<script>
+function runCode() {
+var content = document.getElementById('sourceCode').value;
+var iframe = document.getElementById('targetCode');
+iframe = (iframe.contentWindow)?iframe.contentWindow:(iframe.contentDocument)? iframe.contentDocument.document: 
+iframe.contentDocument;
+
+iframe.document.open();
+iframe.document.write(content);
+iframe.document.close();
+return false;
+}
+runCode();
+</script>
+</tr>
+</th>
+</table>
+</body>
+</html>

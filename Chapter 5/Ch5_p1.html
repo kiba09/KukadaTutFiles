@@ -1,0 +1,121 @@
+Try it!
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+       <style> textarea, iframe
+	   {
+border:2px solid #400040;
+height:600px;
+width:100%;
+}
+</style>
+	 </head>
+	 <body><table border="2" width="100%" height="100%"> <tr bgcolor="#efdfff"><th>
+	 <table width="100%" height="100%" border="0" cellspacing="5" cellpadding="5">
+	 <tr>
+<td width="50%" scope="col">  </td> 
+<td width="50%" scope="col" align="left"> 
+   <center><input onclick="runCode();" type="button" value= "Run Code!"></center>
+</td>
+</tr>
+<td>
+<form>
+<center><b>Paste Your Code here!</b></center>
+<textarea name="sourceCode" id="sourceCode">
+
+
+<html>
+<head> <title>My Codes</title> </head>
+<script>
+// Prototype Chaining and Object.prototype 
+
+var book = {
+title: "The Principles of Object-Oriented JavaScript"
+};
+var prototype = Object.getPrototypeOf(book);
+console.log(prototype === Object.prototype); // true
+
+//value of 
+var now = new Date();
+var earlier = new Date(2010, 1, 1);
+console.log(now > earlier); // true
+
+// to string() 
+var book = {
+title: "The Principles of Object-Oriented JavaScript"
+};
+var message = "Book = " + book;
+console.log(message); // "Book = [object Object]"
+
+//sample 
+var book = {
+title: "The Principles of Object-Oriented JavaScript",
+toString: function() {
+return "[Book " + this.title + "]"
+}
+};
+var message = "Book = " + book;
+// "Book = [Book The Principles of Object-Oriented JavaScript]"
+console.log(message);
+
+// Modifying Object.prototype 
+Object.prototype.add = function(value) {
+return this + value;
+};
+var book = {
+title: "The Principles of Object-Oriented JavaScript"
+};
+console.log(book.add(5)); // "[object Object]5"
+console.log("title".add("end")); // "titleend"
+// in a web browser
+console.log(document.add(true)); // "[object HTMLDocument]true"
+console.log(window.add(5)); // "[object Window]true"
+
+var empty = {};
+for (var property in empty) {
+console.log(property);
+}
+
+var empty = {};
+for (var property in empty) {
+if (empty.hasOwnProperty(property)) {
+console.log(property);
+}
+}
+
+</script>
+<body>
+<h1> Welcome Coders!</h1>
+<p> Write HTML, Javascript or CSS here & click run code!</p>
+<p>Also to view <b>console.log</b> output you must view browser console (pressing F12 for chrome users)<p>
+</body> 
+</html>
+
+
+</textarea>
+</form>
+</td>
+
+<td><b><center>Output</b></center>
+<iframe name="targetCode"  id="targetCode"> </iframe> </td>
+</table>
+<script>
+function runCode() {
+var content = document.getElementById('sourceCode').value;
+var iframe = document.getElementById('targetCode');
+iframe = (iframe.contentWindow)?iframe.contentWindow:(iframe.contentDocument)? iframe.contentDocument.document: 
+iframe.contentDocument;
+
+iframe.document.open();
+iframe.document.write(content);
+iframe.document.close();
+return false;
+}
+runCode();
+</script>
+</tr>
+</th>
+</table>
+</body>
+</html>
